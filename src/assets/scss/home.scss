@@ -1,0 +1,46 @@
+@import './app.scss' , './variables/colors' , './variables/elevations' , './variables/transition' , './variables/effects';
+
+.App {
+    &__home {
+        background-color: $background;
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+        .home__buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 50%;
+            margin: 0 auto;
+            max-width: 400px;
+            .buttons__CTA {
+                outline: none;
+                border: none;
+                border-radius: 29px;
+                box-shadow: $el-1;
+                padding: 12px 25px;
+                color: $white;
+                cursor: pointer;
+                transition: $transition;
+                &--primary {
+                    background-color: $CTA--primary;
+                    margin-bottom: 32px;
+                    &:hover {
+                        background-color: $CTA--primary--darker;
+                        box-shadow: $el-2;
+                        transform: $scale;
+                    }
+                }
+                &--secondary {
+                    background-color: $CTA--secondary;
+                    &:hover {
+                        background-color: $CTA--secondary--darker;
+                        box-shadow: $el-2;
+                        transform: $scale;   
+                    }
+                }
+            }
+        }
+    }
+}
