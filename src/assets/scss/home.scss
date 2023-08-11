@@ -23,6 +23,7 @@
                 color: $white;
                 cursor: pointer;
                 transition: $transition;
+                text-decoration: none;
                 &--primary {
                     background-color: $CTA--primary;
                     margin-bottom: 32px;
