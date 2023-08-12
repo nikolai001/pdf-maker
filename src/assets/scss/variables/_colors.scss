@@ -6,4 +6,7 @@ $black--icon: rgb($black, 70%);
 $CTA--primary: #42BFDD;
 $CTA--primary--darker: darken($CTA--primary, 10%);
 $CTA--secondary: #084B83;
-$CTA--secondary--darker: darken($CTA--secondary, 5%)
+$CTA--secondary--darker: darken($CTA--secondary, 5%);
+$icon: rgb($black,0.7);
+$icon__background: rgb(#9B59B6,0.15);
+$icon--active: rgb(#8E44AD,0.5);

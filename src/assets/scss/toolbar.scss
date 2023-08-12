@@ -1,6 +1,43 @@
-@import './app.scss';
+@import './app.scss','./variables/colors','./variables/elevations';
 
 .toolbar {
-    width: 100%;
+    width: 75%;
+    max-width: 720px;
     display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    background-color: $white--elevated;
+    border-radius: 12px;
+    padding: 10px 18px;
+    box-shadow: $el-1;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 15px;
+    &__dropdown {
+        background: transparent;
+        outline: none;
+        border: none;
+        border-left: 2px solid rgb($black,0.3);
+        border-right: 2px solid rgb($black,0.3);
+    }
+    &__icon {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: $icon;
+        border-radius: 5px;
+        width: 5%;
+        aspect-ratio: 1/1;
+        max-width: 25px;
+        padding: 2px;
+        box-sizing: content-box;
+        &:hover {
+            color: #9B59B6;
+        }
+    }
+    &__icon--active {
+        color: $icon--active;
+        background-color: $icon__background;
+    }
 }
