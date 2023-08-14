@@ -11,6 +11,7 @@
     padding: 10px 18px;
     box-shadow: $el-1;
     position: absolute;
+    z-index: 2;
     left: 0;
     right: 0;
     top: 15px;
@@ -20,6 +21,8 @@
         border: none;
         border-left: 2px solid rgb($black,0.3);
         border-right: 2px solid rgb($black,0.3);
+        width: 25%;
+        text-overflow: ellipsis;
     }
     &__icon {
         background-color: transparent;
@@ -32,12 +35,16 @@
         max-width: 25px;
         padding: 2px;
         box-sizing: content-box;
+        font-size: clamp(8px, 3vw, 24px);
         &:hover {
-            color: #9B59B6;
+            color: $icon--active;
         }
     }
     &__icon--active {
-        color: $icon--active;
+        color: #9B59B6;
         background-color: $icon__background;
+        &:hover {
+            color: #9B59B6;
+        }
     }
 }

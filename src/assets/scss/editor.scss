@@ -1,6 +1,17 @@
-@import './app.scss';
+@import './app.scss', './variables/elevations';
 
 .editor {
     width: 100%;
     display: grid;
+    &__document {
+        width: 80%;
+        aspect-ratio: 1/1.414;
+        box-shadow: $el-3;
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        top: 15%;
+    }
 }
