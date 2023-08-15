@@ -2,7 +2,7 @@ import '../assets/scss/toolbar.scss'
 import React, { useEffect, useState } from 'react';
 const API_KEY = process.env.REACT_APP_API_KEY
 
-export default function Toolbar() {
+export default function Toolbar({receivedData}) {
 
     useEffect(() => {
         async function fetchFonts() {
@@ -14,20 +14,21 @@ export default function Toolbar() {
       }, []);
 
         const applyFont = (font) => {
-          setCurrentFont(font);
+        //   setCurrentFont(font);
       
           const fontUrl = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(font)}&display=swap`;
           const style = document.createElement('link');
           style.href = fontUrl;
           style.rel = 'stylesheet';
           document.head.appendChild(style);
+          receivedData(font)
         };
 
     const [currentTool, setCurrentTool] = useState('')
 
     const [fonts, setFonts] = useState([])
 
-    const [currentFont, setCurrentFont] = useState('')
+    // const [currentFont, setCurrentFont] = useState('')
 
     const tools = [
         { value: 'Pan', icon: 'pan_tool' },
