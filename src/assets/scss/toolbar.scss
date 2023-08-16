@@ -10,7 +10,7 @@
     border-radius: 12px;
     padding: 10px 18px;
     box-shadow: $el-1;
-    position: absolute;
+    position: fixed;
     z-index: 2;
     left: 0;
     right: 0;
@@ -36,6 +36,7 @@
         padding: 2px;
         box-sizing: content-box;
         font-size: clamp(8px, 3vw, 24px);
+        cursor: pointer;
         &:hover {
             color: $icon--active;
         }

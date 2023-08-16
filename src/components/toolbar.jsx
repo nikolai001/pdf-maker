@@ -24,33 +24,31 @@ export default function Toolbar({receivedData}) {
           receivedData(font)
         };
 
-    const [currentTool, setCurrentTool] = useState('')
+    const [currentTool, setCurrentTool] = useState('Select')
 
     const [fonts, setFonts] = useState([])
 
-    // const [currentFont, setCurrentFont] = useState('')
-
     const tools = [
-        { value: 'Pan', icon: 'pan_tool' },
-        { value: 'Select', icon: 'arrow_selector_tool' },
-        { value: 'Shape', icon: 'check_box_outline_blank' },
-        { value: 'Text', icon: 'title' },
+        { value: 'Pan', icon: 'pan_tool', tip: 'Pan tool' },
+        { value: 'Select', icon: 'arrow_selector_tool', tip: 'Select' },
+        { value: 'Shape', icon: 'check_box_outline_blank', tip: 'Forms' },
+        { value: 'Text', icon: 'title', tip: 'Text' },
     ]
 
     const properties = [
-        {value: 'Align-left', icon: 'format_align_left'},
-        {value: 'Align-center', icon: 'format_align_center'},
-        {value: 'Align-right', icon: 'format_align_right'},
+        {value: 'Align-left', icon: 'format_align_left', tip: 'Align left'},
+        {value: 'Align-center', icon: 'format_align_center', tip: 'Align center'},
+        {value: 'Align-right', icon: 'format_align_right', tip: 'Align right'},
     ]
 
     const color = [
-        {value: 'Color', icon: 'palette', fill: '', stroke: ''},
+        {value: 'Color', icon: 'palette', fill: '', stroke: '', tip: 'Color palette'},
     ]
 
     const extras = [
-        {value: 'More', icon: 'more_horiz'},
-        {value: 'Download', icon: 'download'},
-        {value: 'Print', icon: 'print'}
+        {value: 'More', icon: 'more_horiz', tip: 'More'},
+        {value: 'Download', icon: 'download', tip: 'Download document'},
+        {value: 'Print', icon: 'print', tip: 'Print document'}
     ]
 
     const clickedTool = (tool) => {
@@ -63,10 +61,10 @@ export default function Toolbar({receivedData}) {
     return (
       <div className="toolbar">
         {tools.map((tool) => (
-            <button key={tool.value} className={`material-symbols-outlined toolbar__icon ${currentTool === tool.value ? 'toolbar__icon--active' : ''}`} onClick={() => clickedTool(tool.value)}>{tool.icon}</button>
+            <button key={tool.value} title={tool.tip} className={`material-symbols-outlined toolbar__icon ${currentTool === tool.value ? 'toolbar__icon--active' : ''}`} onClick={() => clickedTool(tool.value)}>{tool.icon}</button>
         ))}
         {color.map((color) => (
-            <button key={color.value} className={`material-symbols-outlined toolbar__icon ${currentTool === color.value ? 'toolbar__icon--active' : ''}`} onClick={() => clickedTool(color.value)}>{color.icon}</button>
+            <button key={color.value} title={color.tip} className={`material-symbols-outlined toolbar__icon ${currentTool === color.value ? 'toolbar__icon--active' : ''}`} onClick={() => clickedTool(color.value)}>{color.icon}</button>
         ))}
         <select className="toolbar__dropdown" onChange={(e) => applyFont(e.target.value)}>
             {fonts.map((font) => (
@@ -74,12 +72,11 @@ export default function Toolbar({receivedData}) {
             ))}
         </select>
         {properties.map((property) => (
-            <button key={property.value} className={`material-symbols-outlined toolbar__icon ${currentTool === property.value ? 'toolbar__icon--active' : ''}`} onClick={() => clickedTool(property.value)}>{property.icon}</button>
+            <button key={property.value} title={property.tip} className={`material-symbols-outlined toolbar__icon ${currentTool === property.value ? 'toolbar__icon--active' : ''}`} onClick={() => clickedTool(property.value)}>{property.icon}</button>
         ))}
         {extras.map((feat) => (
-            <button key={feat.value} className={`material-symbols-outlined toolbar__icon ${currentTool === feat.value ? 'toolbar__icon--active' : ''}`} onClick={() => clickedTool(feat.value)}>{feat.icon}</button>
+            <button key={feat.value} title={feat.tip} className={`material-symbols-outlined toolbar__icon ${currentTool === feat.value ? 'toolbar__icon--active' : ''}`} onClick={() => clickedTool(feat.value)}>{feat.icon}</button>
         ))}
-        {/* <h1 className='font__test' style={{ fontFamily: currentFont }}>Im a test</h1> */}
       </div>
     );
   }
