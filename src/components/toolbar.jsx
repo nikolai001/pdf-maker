@@ -2,7 +2,7 @@ import '../assets/scss/toolbar.scss'
 import React, { useEffect, useState } from 'react';
 const API_KEY = process.env.REACT_APP_API_KEY
 
-export default function Toolbar({receivedData}) {
+export default function Toolbar({receivedData, action}) {
 
     useEffect(() => {
         async function fetchFonts() {
@@ -14,7 +14,6 @@ export default function Toolbar({receivedData}) {
       }, []);
 
         const applyFont = (font) => {
-        //   setCurrentFont(font);
       
           const fontUrl = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(font)}&display=swap`;
           const style = document.createElement('link');
@@ -52,11 +51,25 @@ export default function Toolbar({receivedData}) {
     ]
 
     const clickedTool = (tool) => {
+        if (tool === "Text") {
+            document.querySelector("*").style.cursor = "text"
+        }else if (tool === "Pan") {
+            document.querySelector("*").style.cursor = "grab"
+        }else if (tool === "Select"){
+            document.querySelector("*").style.cursor = "default"
+        }else if (tool === "Shape"){
+            document.querySelector("*").style.cursor = "cell"
+        }else {
+            document.querySelector("*").style.cursor = "auto"
+        }
         if (!currentTool || currentTool === tool) {
             setCurrentTool(tool)
+            action(tool)
             return
         }
         setCurrentTool(tool)
+        action(tool)
+        return
       }; 
     return (
       <div className="toolbar">
