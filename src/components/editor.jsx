@@ -17,19 +17,28 @@ export default function Editor() {
       };
 
     const clickDocument = (action, event) => {
+        const createElement = (clicked, element) => {
+          console.log(clicked.target)
+          if (clicked.target.classList.contains('editor__document')) {
+            clicked.target.appendChild(element)
+          }else {
+            clicked.target.parentNode.appendChild(element)
+          }
+          element.style.left = mousePos.X +"px"
+          element.style.top = mousePos.Y +"px"
+        }
+        let mousePos = {X:event.clientX, Y:event.clientY}
         if ( action === "Shape") {
             let newShape = document.createElement("div");
-            console.log(event.target)
-            console.log(event.clientX)
-            event.target.appendChild(newShape);
+            newShape.classList.add("document__element");
+            createElement(event,newShape)
+            newShape.style.width = '50px'
+            newShape.style.height = '50px'
+            newShape.style.backgroundColor = '#000'
         }else if (action === "Text") {
             let newText = document.createElement("textarea");
             newText.classList.add("document__element");
-            event.target.appendChild(newText);
-            // console.log(newText.clientWidth)
-            console.log(event.clientX-(newText.offsetWidth/2))
-            newText.style.left = event.clientX +"px"
-            newText.style.top = event.clientY +"px"
+            createElement(event,newText)
         }
     }
 
