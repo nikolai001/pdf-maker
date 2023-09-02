@@ -7,11 +7,11 @@
         width: 80%;
         aspect-ratio: 1/1.414;
         box-shadow: $el-3;
-        // position: absolute;
+        position: absolute;
         z-index: 1;
         left: 0;
         right: 0;
-        margin: 100px auto 50px auto;
+        margin: 0 auto;
         top: 15%;
         overflow: hidden;
         .document__element {
