@@ -1,5 +1,6 @@
 import '../assets/scss/toolbar.scss'
 import React, { useEffect, useState } from 'react';
+import Palette from './palette';
 const API_KEY = process.env.REACT_APP_API_KEY
 
 export default function Toolbar({receivedData, action}) {
@@ -50,6 +51,13 @@ export default function Toolbar({receivedData, action}) {
         {value: 'Print', icon: 'print', tip: 'Print document'}
     ]
 
+    const renderedPalette = () => {
+        if (currentTool === "Color") {
+            return <Palette />
+        }
+        return null
+    }
+
     const clickedTool = (tool) => {
         if (tool === "Text") {
             document.querySelector("*").style.cursor = "text"
@@ -73,6 +81,9 @@ export default function Toolbar({receivedData, action}) {
       }; 
     return (
       <div className="toolbar">
+        <div>
+        {renderedPalette()}
+        </div>
         {tools.map((tool) => (
             <button key={tool.value} title={tool.tip} className={`material-symbols-outlined toolbar__icon ${currentTool === tool.value ? 'toolbar__icon--active' : ''}`} onClick={() => clickedTool(tool.value)}>{tool.icon}</button>
         ))}

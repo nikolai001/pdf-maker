@@ -1,0 +1,49 @@
+@import './app.scss','./variables/colors','./variables/elevations';
+.palette {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: $background;
+    border-radius: 8px;
+    box-shadow: $el-2;
+    position: absolute;
+    width: 30%;
+    top: 120%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    min-height: 50px;
+    align-content: center;
+    justify-content: space-around;
+    &__color {
+        border-radius: 100em;
+        width: 12%;
+        aspect-ratio: 1/1;
+        border: none;
+        &:hover {
+            // border-radius: 100%;
+            // border: 8px solid rgba($color: aqua, $alpha: .2);
+            outline: rgba(aqua,0.3);
+            outline-width: 4px;
+            outline-style: solid;
+        }
+        &--red {
+            background-color: red;
+        }
+        &--yellow {
+            background-color: yellow;
+        }
+        &--green {
+            background-color: green;
+        }
+        &--blue {
+            background-color: blue;
+        }
+        &--white {
+            background-color: white;
+        }
+        &--black {
+            background-color: black;
+        }
+    }
+}
