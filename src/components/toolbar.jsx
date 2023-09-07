@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Palette from './palette';
 const API_KEY = process.env.REACT_APP_API_KEY
 
-export default function Toolbar({receivedData, action}) {
+export default function Toolbar({receivedData, action, BorderColor, FillColor}) {
 
     useEffect(() => {
         async function fetchFonts() {
@@ -51,9 +51,19 @@ export default function Toolbar({receivedData, action}) {
         {value: 'Print', icon: 'print', tip: 'Print document'}
     ]
 
+    const setFillColor = (Fill) => {
+        color.fill = Fill
+        FillColor(Fill)
+      }
+  
+      const setBorderColor = (Border) => {
+        color.stroke = Border
+        BorderColor(Border)
+      }
+
     const renderedPalette = () => {
         if (currentTool === "Color") {
-            return <Palette />
+            return <Palette Border={setBorderColor} Fill={setFillColor}/>
         }
         return null
     }

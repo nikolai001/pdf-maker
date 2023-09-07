@@ -8,6 +8,10 @@ export default function Editor() {
 
     const [action, setAction] = useState('Select');
 
+    const [fillColor,setFill] = useState('#000')
+
+    const [borderColor,setBorder] = useState('#000')
+
     const handleFont = (font) => {
       setFont(font);
     };
@@ -15,6 +19,14 @@ export default function Editor() {
     const handleAction = (action) => {
         setAction(action);
       };
+
+    const setFillColor = (FillColor) => {
+      setFill(FillColor)
+    }
+
+    const setBorderColor = (BorderColor) => {
+      setBorder(BorderColor)
+    }
   
     let parentWidth;
     let parentHeight;
@@ -53,7 +65,10 @@ export default function Editor() {
             createElement(event,newShape)
             newShape.style.width = '10%'
             newShape.style.aspectRatio = '1/1'
-            newShape.style.backgroundColor = '#000'
+            newShape.style.backgroundColor = fillColor
+            newShape.style.borderWidth = '1px'
+            newShape.style.borderStyle = 'solid'
+            newShape.style.borderColor = borderColor
         }else if (action === "Text") {
             let newText = document.createElement("textarea");
             newText.classList.add("document__element");
@@ -63,7 +78,7 @@ export default function Editor() {
 
     return (
       <div className="editor">
-        <Toolbar receivedData={handleFont} action={handleAction}/>
+        <Toolbar receivedData={handleFont} action={handleAction} BorderColor={setBorderColor} FillColor={setFillColor}/>
         <article className='editor__document' onClick={(e) => clickDocument(action, e)}>
           <div className='document__canvas'>
             
